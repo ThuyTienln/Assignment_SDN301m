@@ -13,10 +13,6 @@ class brandController {
             })
     }
       createBrand(req, res) {
-        // const bl = new Blackpink(req.body);
-        // bl.save().then(() => {
-        //   res.redirect("/blackpink");
-        // });
         if (req.body.id) {
           Brands.findByIdAndUpdate(
             req.body.id,
@@ -33,12 +29,13 @@ class brandController {
         }
       }
       deleteBrand(req, res) {
-        Brands.findByIdAndDelete(req.params.brandID).then(() => {
+        Brands.findByIdAndDelete(req.params.brandId)
+        .then(() => {
           res.redirect("/brands");
         });
       }
-      getBrandrDetail(req, res) {
-        Blackpink.findById(req.params.brandID).then((brand) => {
+      getBrandDetail(req, res) {
+        Brands.findById(req.params.brandId).then((brand) => {
           res.status(200).json(brand);
         });
       }

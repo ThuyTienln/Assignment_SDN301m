@@ -13,9 +13,14 @@ const memberSchema = new Schema(
       type: String,
       require: true,
     },
-    // name : {
-    //   type: String,
-    // },
+    name : {
+      type: String,
+      require: true,
+    },
+    YOB : {
+      type : Number,
+      require : true
+    },
     isAdmin: {
       type: Boolean,
       default: false,

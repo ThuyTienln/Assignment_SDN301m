@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <%- include('navbar') %>
+    <%- include('navbar_admin') %>
         <div class="container">
             <div class="columns">
                 <div class="column">
@@ -44,12 +44,13 @@
                                         <button>
                                             <a href="#" class="button is-warning" onclick="editBrand('<%= br._id %>')">Edit</a>
                                         </button>
-                                        <form action="/brands/<%= br.id %>" method="get" style="display: inline">
-                                            <button action="/brands/<%= br.id %>" type="submit"
-                                                class="button is-danger">
-                                                Delete
-                                            </button>
-                                        </form>
+                                        <form
+                                            action="/brands/<%= br._id %>"
+                                            method="post"
+                                            style="display: inline"
+                                        >
+                                        <button><a class="button is-danger" href="/brands/delete/<%=br.id%>">Delete</a></button>   
+                                        </form>  
                                     </td>
                                 </tr>
                                 <% }) %>

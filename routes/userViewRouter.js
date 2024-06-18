@@ -1,6 +1,6 @@
 const express = require("express");
 const userRouter = express.Router();
-const { ensureAuthenticated } = require("../config/auth");
+const { ensureAuthenticated, ensureAdmin } = require("../config/auth");
 
 //call controller
 const userController = require("../controller/userController");
@@ -21,5 +21,15 @@ userRouter.route("/logout")
 userRouter
   .route("/dashboard")
   .get(ensureAuthenticated, userController.dashboard);
+  // .get(ensureAdmin, userController.dashboard);
+
+userRouter
+  .route("/dashboard/:userId")
+  .get(userController.formEditUser)
+  .post(userController.editUser)
+  // .get(userController.getUserDetail)
+
+userRouter.route("/dashboard/delete/:userId")
+ .get(userController.deleteUser)
 
 module.exports = userRouter;

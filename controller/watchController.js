@@ -8,16 +8,11 @@ class watchController {
         Watches.find({})
             .populate("brand")
             .then((watch) => {
-                // Brands.find({})
-                    // .then((brand) => {
-                        res.render('watches', {
-                            title: 'List of watches',
-                            watchData: watch,
-                            // brandData: brand,
-                        })
-                    // })
+                res.render('homePage', {
+                    title: 'List of watches',
+                    watchData: watch,               
+                })                          
             })
-
     }
 
     createWatchGet(req, res, next) {
@@ -92,6 +87,18 @@ class watchController {
         Watches.updateOne({ _id: req.params.watchId }, req.body)
             .then(() => {
                 res.redirect('/watches');
+            })
+    }
+
+    getDetailWatch(req, res, next) {
+        let viewData = {};
+        Watches.findById(req.params.watchId)
+            .populate("brand")
+            .then((watch) => {
+                res.render('watches', {
+                    title: 'Detail of watch',
+                    watchData: watch              
+                })                          
             })
     }
 

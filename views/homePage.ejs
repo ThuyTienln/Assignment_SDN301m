@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" />
+</head>
+<body>
+    <%- include('navbar_admin') %>
+    <div class = "container">
+        <div class = "search-item">
+            <div class="level-item">
+                <div class="field has-addons">
+                  <p class="control">
+                    <input name = "watchName" class="input" type="text" placeholder="Find watch" />
+                  </p>
+                  <p class="control">
+                    <button class="button">Search</button>
+                  </p>
+                </div>
+              </div>
+            <div class="buttons">
+                <a href="/watches/create" class="button is-warning"> Add watch </a>
+            </div>
+        </div>    
+        <div class = "Card-watch">
+            <% watchData.forEach((watch)=> { %>
+            <div class="card" style="width:30%">         
+                    <div class="card-image">
+                    <figure class="image is-128x128">
+                        <img
+                        src="<%= watch.image %>"
+                        alt="Placeholder image"
+                        />
+                    </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                            <p class="title is-4"><%= watch.watchName %></p>
+                            <p class="subtitle is-6">@<%= watch.brand.brandName %></p>
+                            </div>
+                        </div>
+                    </div>    
+                    <button><a class="button is-danger" href="/watches/<%=watch.id%>">View detail</a></button>                   
+            </div>  
+            <% }); %>   
+        </div>
+    </div>   
+</body>
+
+<style>
+    .Card-watch {
+        display : ruby;
+    }
+    .card-image {
+        display : grid;
+        justify-content: center;
+    }
+</style>
+</html>

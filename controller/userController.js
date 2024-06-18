@@ -12,9 +12,9 @@ class userController {
     });
   }
   registerPost(req, res, next) {
-    const { username, password } = req.body;
+    const { username, password, name, YOB } = req.body;
     let errors = [];
-    if (!username || !password) {
+    if (!username || !password || !name || !YOB) {
       errors.push({ msg: "Please enter all fields" });
     }
     if (password.length < 6) {
@@ -25,7 +25,8 @@ class userController {
         errors,
         username,
         password,
-        
+        name, 
+        YOB
       });
     } else {
       Users.findOne({ username: username }).then((user) => {
@@ -35,12 +36,15 @@ class userController {
             errors,
             username,
             password,
+            name, 
+            YOB
           });
         } else {
           const newUser = new Users({
             username,
             password,
-           
+            name, 
+            YOB
           });
           //Hash password
           bcrypt.hash(newUser.password, 10, function (err, hash) {
@@ -70,13 +74,11 @@ class userController {
     })(req, res, next);
   }
   dashboard(req, res, next) {
-    // res.render("dashboard");
     Users.find({})
     .then((user) => {
       res.render('dashboard', {
         title: 'List',
         userData : user,
-        // userData : JSON.parse()
       })
     })
   }
@@ -86,6 +88,26 @@ class userController {
       req.flash("success_msg", "You are logged out");
       res.redirect("/users");
     });
+  }
+  deleteUser(req, res) {
+    Users.findByIdAndDelete(req.params.userId)
+    .then(() => {
+      res.redirect("/dashboard");
+    });
+  }
+  formEditUser(req, res) {
+    let viewData = {};
+    Users.findById(req.params.userId)
+    .then((user) => {
+      res.render('dashboard', {
+        userData: user
+      })
+      res.status(200).json(user);
+    });
+  }
+  editUser(req, res) {
+    Users.updateOne({ _id: req.params.userId }, req.body)
+   .then(() => { res.redirect('/dashboard') })
   }
 }
 

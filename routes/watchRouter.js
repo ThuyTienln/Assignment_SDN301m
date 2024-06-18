@@ -19,5 +19,8 @@ watchRouter
     .get(watchController.formEdit)
     .post(watchController.edit)
 
+watchRouter
+    .route('/:watchId')
+    .get(watchController.getDetailWatch)
 
 module.exports = watchRouter;

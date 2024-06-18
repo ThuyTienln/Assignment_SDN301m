@@ -1,20 +1,21 @@
 const express = require("express");
-const blackpinkRouter = express.Router();
+const brandRouter = express.Router();
 
 //call controller
 const brandController = require("../controller/brandController");
 
-blackpinkRouter
+brandRouter
   .route("/")
   .get(brandController.getAll)
   .post(brandController.createBrand);
 
-blackpinkRouter
-  .route("/:brandID")
+brandRouter
+  .route("/delete/:brandId")
   .get(brandController.deleteBrand);
 
-  blackpinkRouter
-  .route("/:brandID/detail")
-  .get(brandController.getBrandrDetail);
+brandRouter
+  .route("/:brandId/detail")
+  .get(brandController.getBrandDetail);
 
-module.exports = blackpinkRouter;
+module.exports = brandRouter;
+ 
