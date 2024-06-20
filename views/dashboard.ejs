@@ -8,7 +8,7 @@
     Dashboard
   </title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" />
-  <script>
+  <!-- <script>
     function toggleForm(formId) {
       const form = document.getElementById(formId);
       if (form.style.display === 'none') {
@@ -17,19 +17,14 @@
         form.style.display = 'none';
       }
     }
-  </script>
+  </script> -->
 </head>
 
 <body>
   <%- include('navbar_admin') %>
-    <div style="margin-right: 700px;">
-      <!-- <button class="button btn-sm btn-label-danger">
-        <a href="/user/logout">Logout</a>
-      </button> -->
-    </div>
-    <div class = "card-dashboard">
+    <div class = "container">
       <% userData.forEach(user=> { %>
-        <div class="card" style="width:30%">
+        <div class="card" style="width:40%">
           <div class="card-content">
             <div class="media">
               <div class="media-left">
@@ -47,7 +42,9 @@
               <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link"> </a>   
                 <div class="navbar-dropdown">
-                  <a class="navbar-item" onclick="toggleForm('editUser')"> Edit </a>                      
+                  <!-- <a class="navbar-item" onclick="toggleForm('editUser')"> Edit </a>                       -->
+                  <a class="navbar-item" href="/users/dashboard/<%=user.id%>"> Edit </a>
+
                   <a class="navbar-item" href="/users/dashboard/delete/<%=user.id%>"> Delete </a>
                 </div>
               </div>
@@ -58,43 +55,11 @@
           </div>
         </div>       
         <% }); %>
-      </div>
-      <div class="card" style="display: none; width:30%" id="editUser">
-        <form action="/users/dashboard" method="POST">
-          <input type="hidden" name="id" value="" />
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-128x128">
-                  <img src="https://bulma.io/assets/images/placeholders/96x96.png" alt="Placeholder image" />
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="subtitle is-6">
-                  <input name="name" class="input" type="text" value = "<%=userData.name%>" />
-                  <input name="YOB" class="input" type="text" value = "<%=userData.YOB%>" />
-                </p>
-                <p class="subtitle is-6">Username : <%= userData.username %></p>                
-                <p class="subtitle is-6">Password : *******</p>
-              </div>
-            </div>
-          </div>
-          <div class="field is-grouped">
-              <div class="control">
-                  <button class="button is-link" type="submit">Submit</button>
-              </div>
-              <div class="control">
-                  <button class="button is-link is-light" type="reset">
-                      Cancel
-                  </button>
-              </div>
-          </div>
-        </form>
-      </div>
-  
+      </div>     
+    </div>
  </body>
  <style>
-    .card-dashboard {
+    .container {
       display : ruby;
     }
  </style>

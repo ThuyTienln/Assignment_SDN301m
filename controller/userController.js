@@ -99,10 +99,9 @@ class userController {
     let viewData = {};
     Users.findById(req.params.userId)
     .then((user) => {
-      res.render('dashboard', {
+      res.render('editDashboard', {
         userData: user
       })
-      res.status(200).json(user);
     });
   }
   editUser(req, res) {

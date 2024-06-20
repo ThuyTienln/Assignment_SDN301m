@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" />
+
+</head>
+<body>
+  <%- include('navbar_admin') %>
+    
+    <div class = "container">
+        <div class="card" style="width:30%">
+            <form action="/users/dashboard" method="POST">
+              <input type="hidden" name="id" value="" />
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-128x128">
+                      <img src="https://bulma.io/assets/images/placeholders/96x96.png" alt="Placeholder image" />
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <p class="subtitle is-6">
+                      <input name="name" class="input" type="text" value = "<%=userData.name%>" />
+                      <input name="YOB" class="input" type="text" value = "<%=userData.YOB%>" />
+                    </p>
+                    <p class="subtitle is-6">Username : <%= userData.username %></p>                
+                    <p class="subtitle is-6">Password : *******</p>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-grouped">
+                  <div class="control">
+                      <button class="button is-link" type="submit">Submit</button>
+                  </div>
+                  <div class="control">
+                      <button class="button is-link is-light" type="reset">
+                          Cancel
+                      </button>
+                  </div>
+              </div>
+            </form>
+          </div>
+    </div>
+</body>
+</html>

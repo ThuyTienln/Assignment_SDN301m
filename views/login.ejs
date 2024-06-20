@@ -9,38 +9,47 @@
   <body>
     <%- include('navbar') %>
     <div class = "container">
-    <h1>Login</h1>
-    <% if(success_msg != ''){ %> <%= success_msg %> <% } %> <% if(error_msg !=
-    ''){ %> <%= error %> <% } %> <% if(error != ''){ %> <%= error %> <% } %>
-    <form style="width: 50%; justify-self: end;margin-left: 50px;" method="post">
-      <div class="field">
-        <label class="label">Username</label>
-        <div class="control">
-          <input
-            class="input"
-            name="username"
-            type="text"
-            placeholder="Type your username...."
+      <div class="columns">
+        <div class="column">
+          <img
+            src="https://i.pinimg.com/originals/07/dd/e4/07dde402c1bca454ee9cad82b44e73c5.png"
+            alt=""
           />
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Password</label>
-        <div class="control">
-          <input
-            class="input"
-            name="password"
-            type="password"
-            placeholder="At least 6 characters"
-          />
+        <div class="column">
+          <h1 id="form-title" class="title">Login</h1>
+          <% if(success_msg != ''){ %> <%= success_msg %> <% } %> <% if(error_msg !=
+          ''){ %> <%= error %> <% } %> <% if(error != ''){ %> <%= error %> <% } %>
+          <form style="width: 50%; justify-self: end;margin-left: 50px;" method="post">
+            <div class="field">
+              <label class="label">Username</label>
+              <div class="control">
+                <input
+                  class="input"
+                  name="username"
+                  type="text"
+                  placeholder="Type your username...."
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input
+                  class="input"
+                  name="password"
+                  type="password"
+                  placeholder="At least 6 characters"
+                />
+              </div>
+            </div>
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-link">Login</button>
+              </div>
+            </div>
+          </form>
         </div>
-      </div>
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-link">Login</button>
-        </div>
-      </div>
-    </form>
-  </div>
+    </div>
   </body>
 </html>
